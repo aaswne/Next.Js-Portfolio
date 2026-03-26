@@ -1,7 +1,7 @@
 import React from "react";
 
 // Light mode logo (Sun)
-export const LogoLight = ({ size = 24 }) => (
+const LogoLight = ({ size = 24 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -19,7 +19,7 @@ export const LogoLight = ({ size = 24 }) => (
 );
 
 // Dark mode logo (Moon)
-export const LogoDark = ({ size = 24 }) => (
+const LogoDark = ({ size = 24 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -34,3 +34,6 @@ export const LogoDark = ({ size = 24 }) => (
     <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
   </svg>
 );
+
+// Export both in a default object
+export default { LogoLight, LogoDark };

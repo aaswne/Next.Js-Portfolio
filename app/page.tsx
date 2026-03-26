@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { projects } from "../app/data/data";
-import { LogoLight, LogoDark } from "../app/link/icon";
+import Logos from "../app/link/icon";
+
 import { useState } from "react";
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
+const { LogoLight, LogoDark } = Logos;
 
   return (
     <div
