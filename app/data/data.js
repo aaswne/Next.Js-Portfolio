@@ -22,7 +22,7 @@ export const projects = [
         id: "netflix-clone",
         title: "Netflix Clone",
         description: "Full-stack streaming platform with authentication.",
-        image: "/image/Netflix.webp",
+        image: "/image/netflix.webp",
         overview:
             "A full-stack Netflix clone that replicates the core UI and functionality of Netflix.",
         tech: ["React", "Tmtb", "JavaScript", "Axios", "Vite"],
