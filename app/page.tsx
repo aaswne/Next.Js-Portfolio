@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { projects } from "../app/data/data";
-import Logos from "./components/icons/icon";
+import Logos from "../components/icons/icon";
 
 import { useState } from "react";
 
