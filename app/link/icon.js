@@ -25,7 +25,7 @@ export const LogoDark = ({ size = 24 }) => (
     width={size}
     height={size}
     fill="none"
-    stroke="white"
+    stroke="black"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
