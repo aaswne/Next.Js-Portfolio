@@ -1,19 +1,46 @@
+"use client";
+
 import Link from "next/link";
 import { projects } from "../app/data/data";
+import { LogoLight, LogoDark } from "../app/link/icon";
+import { useState } from "react";
 
 export default function Home() {
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 dark:bg-black px-4">
-      
+    <div
+      className={`flex flex-col flex-1 items-center justify-center px-4 w-full min-h-screen ${darkMode ? "bg-black text-white" : "bg-white text-black"
+        }`}
+    >
       <main className="flex flex-1 w-full max-w-2xl flex-col items-start justify-center py-20 gap-10">
-        
+
+        {/* Toggle Button */}
+        <div className="w-full h-5 flex justify-end items-center px-2">
+          <button
+            onClick={() => {
+              setDarkMode(!darkMode);
+              console.log("Dark mode is now:", !darkMode);
+
+              if (!darkMode) {
+                document.documentElement.classList.add("dark");
+              } else {
+                document.documentElement.classList.remove("dark");
+              }
+            }}
+            className="flex items-center p-0 bg-transparent"
+          >
+            {darkMode ? <LogoLight size={16} /> : <LogoDark size={16} />}
+          </button>
+        </div>
+
         {/* Intro */}
         <div className="flex flex-col gap-4">
-          <h1 className="text-2xl font-semibold">
-            Aswin Krishna
-          </h1>
-          <p className="text-zinc-600">
-            Frontend Engineer exploring UI, computer, game  and compilers
+          <h1 className="text-2xl font-thin">
+  Aswin Krishna
+</h1>
+          <p className={`${darkMode ? "text-gray-300" : "text-zinc-600"}`}>
+            Frontend Engineer exploring UI, computer, game and compilers
           </p>
         </div>
 
@@ -22,46 +49,28 @@ export default function Home() {
           <h2 className="text-xl font-semibold">Projects</h2>
 
           <div className="flex flex-col gap-5">
-            
-            <div>
-              <Link href="/projects/samsara-ai">
-                <h3 className="hover:underline">
-                  Samsara AI
-                </h3>
-              </Link>
-              <p className="text-sm text-zinc-600">
-                AI-powered workflow automation app.
-              </p>
-            </div>
-
-            <div>
-              <Link href="/projects/netflix-clone">
-                <h3 className="hover:underline">
-                  Netflix Clone
-                </h3>
-              </Link>
-              <p className="text-sm text-zinc-600">
-                Full-stack streaming platform.
-              </p>
-            </div>
-
-            <div>
-              <Link href="/projects/olx-clone">
-                <h3 className="hover:underline">
-                  OLX Clone
-                </h3>
-              </Link>
-              <p className="text-sm text-zinc-600">
-                Marketplace app.
-              </p>
-            </div>
-
+            {projects.map((project) => (
+              <div key={project.id}>
+                <Link href={`/projects/${project.id}`}>
+                  <h3 className={`hover:underline ${darkMode ? "text-white" : "text-black"}`}>
+                    {project.title}
+                  </h3>
+                </Link>
+                <p className={`${darkMode ? "text-gray-300" : "text-zinc-600"}`}>
+                  {project.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 
-         <div className="flex flex-col sm:flex-row gap-3 mt-6 w-full sm:w-auto">
+        {/* Links */}
+        <div className="flex flex-col sm:flex-row gap-3 mt-6 w-full sm:w-auto">
           <a
-            className="flex h-11 w-full sm:w-[140px] items-center justify-center rounded-full bg-foreground px-4 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc]"
+            className={`flex h-11 w-full sm:w-[140px] items-center justify-center rounded-full px-4 transition-colors ${darkMode
+                ? "bg-white text-black hover:bg-gray-300"
+                : "bg-black text-white hover:bg-gray-800"
+              }`}
             href="https://github.com/aaswne"
             target="_blank"
             rel="noopener noreferrer"
@@ -70,13 +79,15 @@ export default function Home() {
           </a>
 
           <a
-            className="flex h-11 w-full sm:w-[140px] items-center justify-center rounded-full border border-black/[.08] px-4 transition-colors hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a]"
+            className={`flex h-11 w-full sm:w-[140px] items-center justify-center rounded-full border px-4 transition-colors ${darkMode
+                ? "border-white hover:bg-gray-800 text-white"
+                : "border-black hover:bg-gray-200 text-black"
+              }`}
             href=""
           >
             Hire Me
           </a>
         </div>
-
       </main>
     </div>
   );
