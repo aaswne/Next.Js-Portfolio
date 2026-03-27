@@ -1,3 +1,4 @@
+
 import "./globals.css";
 import type { Metadata } from "next";
 
@@ -21,7 +22,9 @@ export const metadata: Metadata = {
     "Frontend Engineer",
   ],
 
-  authors: [{ name: "Aswin Krishna", url: "https://aswinkrishna.in" }],
+  authors: [
+    { name: "Aswin Krishna", url: "https://aswinkrishna.in" }
+  ],
   creator: "Aswin Krishna",
 
   openGraph: {
@@ -67,6 +70,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* JSON-LD structured data for SEO & social links */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Aswin Krishna",
+              url: "https://aswinkrishna.in",
+              sameAs: [
+                "https://github.com/aaswne",
+                "https://linkedin.com/in/aswinkrishna",
+                "https://twitter.com/aswinkrishna",
+              ],
+              jobTitle: "Frontend Engineer",
+            }),
+          }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col antialiased">
         {children}
       </body>
