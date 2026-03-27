@@ -70,9 +70,6 @@ const { LogoLight, LogoDark } = Logos;
         {/* Links */}
         <div className="flex flex-col sm:flex-row gap-3 mt-6 w-full sm:w-auto">
 
-
-        
-          
           <a
             className={`flex h-11 w-full sm:w-[140px] items-center justify-center rounded-full px-4 transition-colors ${darkMode
                 ? "bg-white text-black hover:bg-gray-300"
@@ -85,20 +82,22 @@ const { LogoLight, LogoDark } = Logos;
             Github
           </a>
 
-          <a
-            className={`flex h-11 w-full sm:w-[140px] items-center justify-center rounded-full border px-4 transition-colors ${darkMode
-                ? "border-white hover:bg-gray-800 text-white"
-                : "border-black hover:bg-gray-200 text-black"
-              }`}
-            href=""
-          >
-            Hire Me
-          </a>
+        <a
+  className={`flex h-11 w-full sm:w-[140px] items-center justify-center rounded-full border px-4 transition-colors ${
+    darkMode
+      ? "border-white hover:bg-gray-800 text-white"
+      : "border-black hover:bg-gray-200 text-black"
+  }`}
+  href="mailto:ashhwin041@gmail.com"
+>
+  Hire Me
+</a>
         </div>
-           <div className="text-xs opacity-50 flex items-center gap-2">
+        <div className="text-xs opacity-50 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
           Available for work
         </div>
+          
       </main>
     </div>
   );
