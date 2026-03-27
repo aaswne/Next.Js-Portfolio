@@ -95,7 +95,7 @@ const { LogoLight, LogoDark } = Logos;
         </div>
         <div className="text-xs opacity-50 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-          Available for work
+         Available for Remote · Onsite
         </div>
           
       </main>
