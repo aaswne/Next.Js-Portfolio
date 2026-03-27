@@ -57,10 +57,10 @@ const { LogoLight, LogoDark } = Logos;
                   <h3 className={`hover:underline ${darkMode ? "text-white" : "text-black"}`}>
                     {project.title}
                   </h3>
-                </Link>
                 <p className={`${darkMode ? "text-gray-300" : "text-zinc-600"}`}>
                   {project.description}
                 </p>
+                 </Link>
               </div>
             ))}
           </div>
