@@ -3,33 +3,50 @@
 import Link from "next/link";
 import { projects } from "../app/data/data";
 import Logos from "../components/icons/icon";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
-const { LogoLight, LogoDark } = Logos;
+  const { LogoLight, LogoDark } = Logos;
+
+  // ✅ Load theme from localStorage
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+      setDarkMode(true);
+      document.documentElement.classList.add("dark");
+    } else {
+      setDarkMode(false);
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
+
+  // ✅ Toggle function
+  const toggleTheme = () => {
+    if (darkMode) {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+      setDarkMode(false);
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+      setDarkMode(true);
+    }
+  };
 
   return (
     <div
-      className={`flex flex-col flex-1 items-center justify-center px-4 w-full min-h-screen ${darkMode ? "bg-black text-white" : "bg-white text-black"
-        }`}
+      className={`flex flex-col flex-1 items-center justify-center px-4 w-full min-h-screen ${
+        darkMode ? "bg-black text-white" : "bg-white text-black"
+      }`}
     >
       <main className="flex flex-1 w-full max-w-2xl flex-col items-start justify-center py-20 gap-10">
-
+        
         {/* Toggle Button */}
         <div className="w-full h-5 flex justify-end items-center px-2">
           <button
-            onClick={() => {
-              setDarkMode(!darkMode);
-              console.log("Dark mode is now:", !darkMode);
-
-              if (!darkMode) {
-                document.documentElement.classList.add("dark");
-              } else {
-                document.documentElement.classList.remove("dark");
-              }
-            }}
+            onClick={toggleTheme}
             className="flex items-center p-0 bg-transparent"
           >
             {darkMode ? <LogoLight size={16} /> : <LogoDark size={16} />}
@@ -38,9 +55,7 @@ const { LogoLight, LogoDark } = Logos;
 
         {/* Intro */}
         <div className="flex flex-col gap-4">
-          <h1 className="text-2xl font-thin">
-  Aswin Krishna
-</h1>
+          <h1 className="text-2xl font-thin">Aswin Krishna</h1>
           <p className={`${darkMode ? "text-gray-300" : "text-zinc-600"}`}>
             Frontend Engineer exploring UI, computer, game and compilers
           </p>
@@ -54,14 +69,22 @@ const { LogoLight, LogoDark } = Logos;
             {projects.map((project) => (
               <div key={project.id}>
                 <Link href={`/projects/${project.id}`}>
-                  <h3 className={`hover:underline ${darkMode ? "text-white" : "text-black"}`}>
+                  <h3
+                    className={`hover:underline ${
+                      darkMode ? "text-white" : "text-black"
+                    }`}
+                  >
                     {project.title}
                   </h3>
-      
-                <p className={`${darkMode ? "text-gray-300" : "text-zinc-600"}`}>
-                  {project.description}
-                </p>
-                 </Link>
+
+                  <p
+                    className={`${
+                      darkMode ? "text-gray-300" : "text-zinc-600"
+                    }`}
+                  >
+                    {project.description}
+                  </p>
+                </Link>
               </div>
             ))}
           </div>
@@ -69,12 +92,12 @@ const { LogoLight, LogoDark } = Logos;
 
         {/* Links */}
         <div className="flex flex-col sm:flex-row gap-3 mt-6 w-full sm:w-auto">
-
           <a
-            className={`flex h-11 w-full sm:w-[140px] items-center justify-center rounded-full px-4 transition-colors ${darkMode
+            className={`flex h-11 w-full sm:w-[140px] items-center justify-center rounded-full px-4 transition-colors ${
+              darkMode
                 ? "bg-white text-black hover:bg-gray-300"
                 : "bg-black text-white hover:bg-gray-800"
-              }`}
+            }`}
             href="https://github.com/aaswne"
             target="_blank"
             rel="noopener noreferrer"
@@ -82,22 +105,22 @@ const { LogoLight, LogoDark } = Logos;
             Github
           </a>
 
-        <a
-  className={`flex h-11 w-full sm:w-[140px] items-center justify-center rounded-full border px-4 transition-colors ${
-    darkMode
-      ? "border-white hover:bg-gray-800 text-white"
-      : "border-black hover:bg-gray-200 text-black"
-  }`}
-  href="mailto:ashhwin041@gmail.com"
->
-  Hire Me
-</a>
+          <a
+            className={`flex h-11 w-full sm:w-[140px] items-center justify-center rounded-full border px-4 transition-colors ${
+              darkMode
+                ? "border-white hover:bg-gray-800 text-white"
+                : "border-black hover:bg-gray-200 text-black"
+            }`}
+            href="mailto:ashhwin041@gmail.com"
+          >
+            Hire Me
+          </a>
         </div>
+
         <div className="text-xs opacity-50 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-         Available for Remote · Onsite
+          Available for Remote · Onsite
         </div>
-          
       </main>
     </div>
   );
