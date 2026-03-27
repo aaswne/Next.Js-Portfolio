@@ -87,9 +87,9 @@ export default async function ProjectPage({ params }) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-4 hover:text-black"
+              className=" underline-offset-4 hover:underline"
             >
-              GitHub
+              Repo
             </a>
           )}
           {project.live && (
@@ -97,9 +97,9 @@ export default async function ProjectPage({ params }) {
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-4 hover:text-black"
+              className=" underline-offset-4 hover:underline"
             >
-              Live Demo
+              Live 
             </a>
           )}
         </div>
