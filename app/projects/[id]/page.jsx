@@ -18,12 +18,10 @@ export default async function ProjectPage({ params }) {
           <h1 className="text-3xl font-semibold tracking-tight">
             {project.title}
           </h1>
-          <p className="text-zinc-500">
-            {project.description}
-          </p>
+          <p className="text-zinc-500">{project.description}</p>
         </div>
 
-        {/* ✅ Image */}
+        {/* Image */}
         <div className="w-full overflow-hidden rounded-xl">
           <Image
             src={project.image}
@@ -39,24 +37,25 @@ export default async function ProjectPage({ params }) {
           <h2 className="text-sm uppercase tracking-wide text-zinc-400">
             Overview
           </h2>
-          <p className="leading-relaxed text-zinc-700">
-            {project.overview}
-          </p>
+          <p className="leading-relaxed text-zinc-700">{project.overview}</p>
         </section>
 
-        {/* Tech */}
+        {/* Tech Stack */}
         <section className="space-y-2">
           <h2 className="text-sm uppercase tracking-wide text-zinc-400">
             Tech Stack
           </h2>
           <div className="flex flex-wrap gap-2">
             {project.tech.map((t, i) => (
-              <span
+              <a
                 key={i}
-                className="text-xs px-2 py-1 bg-zinc-100 rounded-md"
+                href={t.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs px-2 py-1 bg-zinc-100 rounded-md text-blue-600 hover:underline"
               >
-                {t}
-              </span>
+                {t.name}
+              </a>
             ))}
           </div>
         </section>
@@ -78,27 +77,31 @@ export default async function ProjectPage({ params }) {
           <h2 className="text-sm uppercase tracking-wide text-zinc-400">
             Challenges
           </h2>
-          <p className="text-zinc-700 leading-relaxed">
-            {project.challenges}
-          </p>
+          <p className="text-zinc-700 leading-relaxed">{project.challenges}</p>
         </section>
 
         {/* Links */}
         <div className="flex gap-6 pt-4 text-sm">
-          <a
-            href={project.github}
-            target="_blank"
-            className="underline underline-offset-4 hover:text-black"
-          >
-            GitHub
-          </a>
-          <a
-            href={project.live}
-            target="_blank"
-            className="underline underline-offset-4 hover:text-black"
-          >
-            Live Demo
-          </a>
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4 hover:text-black"
+            >
+              GitHub
+            </a>
+          )}
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4 hover:text-black"
+            >
+              Live Demo
+            </a>
+          )}
         </div>
 
       </div>
