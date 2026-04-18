@@ -24,31 +24,6 @@ export const projects = [
   },
 
   {
-    id: "netflix-clone",
-    title: "Netflix Clone",
-    description: "Full-stack streaming platform with authentication.",
-    image: "/image/netflix.webp",
-    overview:
-      "A full-stack Netflix clone that replicates the core UI and functionality of Netflix.",
-    tech: [
-      { name: "React", url: "https://reactjs.org" },
-      { name: "Tmtb", url: "#" }, // Replace with actual link if available
-      { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
-      { name: "Axios", url: "https://axios-http.com" },
-      { name: "Vite", url: "https://vitejs.dev" },
-    ],
-    features: [
-      "User authentication",
-      "Dynamic movie listing",
-      "Responsive UI design",
-    ],
-    challenges:
-      "Managing authentication securely and handling state across components.",
-    github: "https://github.com/aaswne/Netflix-Clone",
-    live: "https://aaswne.github.io/Netflix-Clone/",
-  },
-
-  {
     id: "olx-clone",
     title: "Full Stack Marketplace",
     description: "Marketplace app for buying and selling products.",
